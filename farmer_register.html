@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Registration - Smart Kisan</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🌾 Farmer Registration</h1>
+
+        <p>Please enter your details</p>
+
+
+        {% if error %}
+
+        <div class="error">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        <form method="POST"
+              action="{{ url_for('farmer_register', lang=lang) }}">
+
+
+            <!-- FARMER NAME -->
+
+            <label for="name">
+                Farmer Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter Farmer Name"
+                required
+            >
+
+
+            <!-- VILLAGE -->
+
+            <label for="village">
+                Village
+            </label>
+
+            <input
+                type="text"
+                id="village"
+                name="village"
+                placeholder="Enter your Village"
+                required
+            >
+
+
+            <!-- CROP -->
+
+            <label for="crop">
+                Crop
+            </label>
+
+            <input
+                type="text"
+                id="crop"
+                name="crop"
+                placeholder="Enter Crop Name"
+                required
+            >
+
+
+            <!-- QUANTITY -->
+
+            <label for="quantity">
+                Quantity
+            </label>
+
+            <input
+                type="text"
+                id="quantity"
+                name="quantity"
+                placeholder="Example: 55 kg"
+                required
+            >
+
+
+            <!-- MOBILE -->
+
+            <label for="mobile">
+                Mobile Number
+            </label>
+
+            <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                placeholder="Enter 10 digit mobile number"
+                maxlength="10"
+                required
+            >
+
+
+            <!-- SUBMIT -->
+
+            <button type="submit">
+                REGISTER
+            </button>
+
+        </form>
+
+
+        <br>
+
+
+        <a href="{{ url_for('farmer_login', lang=lang) }}"
+           class="back-link">
+
+            ← Back to Farmer Login
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

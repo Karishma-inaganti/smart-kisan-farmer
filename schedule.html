@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Procurement Schedule</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .schedule-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .schedule-title {
+            text-align: center;
+            color: #166534;
+            margin-bottom: 30px;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+        }
+
+        .date-title {
+            color: #166534;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .slot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f5fdf6;
+            border-radius: 10px;
+            border: 1px solid #d9f0dc;
+        }
+
+        .slot-time {
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .available {
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        .book-btn {
+            background: #15803d;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .book-btn:hover {
+            background: #166534;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #166534;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="schedule-container">
+
+    <a href="{{ url_for('farmer', lang=lang) }}"
+       class="back-btn">
+        ← Back to Farmer Dashboard
+    </a>
+
+    <h1 class="schedule-title">
+        Procurement Schedule
+    </h1>
+
+    <p style="text-align:center;">
+        Available slots for the next 7 days
+    </p>
+
+
+    {% set current_date = "" %}
+
+    {% for slot in slots %}
+
+        {% if slot.date != current_date %}
+
+            {% if not loop.first %}
+                </div>
+            {% endif %}
+
+            {% set current_date = slot.date %}
+
+            <div class="day-card">
+
+                <div class="date-title">
+                    📅 {{ slot.date }}
+                </div>
+
+        {% endif %}
+
+
+        <div class="slot">
+
+            <div>
+
+                <div class="slot-time">
+                    🕒 {{ slot.time }}
+                </div>
+
+                <div class="available">
+                    {{ slot.available }} slots available
+                </div>
+
+            </div>
+
+
+            {% if slot.available > 0 %}
+
+            <form method="POST"
+                  action="{{ url_for('book_slot') }}?lang={{ lang }}">
+
+                <input type="hidden"
+                       name="date"
+                       value="{{ slot.date_value }}">
+
+                <input type="hidden"
+                       name="time"
+                       value="{{ slot.time }}">
+
+                <button type="submit"
+                        class="book-btn">
+                    Book Slot
+                </button>
+
+            </form>
+
+            {% else %}
+
+                <button class="book-btn"
+                        disabled>
+                    Full
+                </button>
+
+            {% endif %}
+
+        </div>
+
+        {% if loop.last %}
+            </div>
+        {% endif %}
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>{{ t.officer_dashboard }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- HEADING -->
+    <div class="dashboard-heading">
+
+        <h1>👨‍💼 {{ t.officer_dashboard }}</h1>
+
+        <p>
+            Manage farmer procurement and centre activities
+        </p>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+    <!-- Total Farmers -->
+    <div class="card">
+        <div class="card-icon">👩‍🌾</div>
+        <h2>Total Farmers</h2>
+        <div class="number">{{ total_farmers }}</div>
+    </div>
+
+    <!-- Pending Procurement -->
+    <div class="card">
+        <div class="card-icon">⌛</div>
+        <h2>Pending Procurement</h2>
+        <div class="number">{{ pending_procurement }}</div>
+    </div>
+
+    <!-- Completed Procurement -->
+    <div class="card">
+        <div class="card-icon">✅</div>
+        <h2>Completed Procurement</h2>
+        <div class="number">{{ completed_procurement }}</div>
+    </div>
+
+    <!-- Procurement Records -->
+    <div class="card">
+        <div class="card-icon">📋</div>
+        <h2>Procurement Records</h2>
+        <p>View and manage farmer procurement records.</p>
+
+        <a href="/officer-procurement-status?lang={{ lang }}">
+            View Records
+        </a>
+    </div>
+
+    <!-- Officer Notifications -->
+    <div class="card">
+        <div class="card-icon">🔔</div>
+        <h2>Officer Notifications</h2>
+        <p>
+            View notifications related to farmers and procurement.
+        </p>
+
+        <a href="/officer-notifications?lang={{ lang }}">
+            View Notifications
+        </a>
+    </div>
+
+</div>
+    <div class="home-link">
+
+        <a href="{{ url_for('home', lang=lang) }}">
+            ← {{ t.home }}
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

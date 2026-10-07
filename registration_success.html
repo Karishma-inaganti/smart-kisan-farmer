@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Successful</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>✅ Registration Successful</h1>
+
+        <h2>Welcome {{ farmer_name }}!</h2>
+
+
+        <p>
+            Your Farmer ID is:
+        </p>
+
+
+        <div class="token-box">
+
+            <strong>
+                {{ farmer_id }}
+            </strong>
+
+        </div>
+
+
+        <p>
+            Please remember this Farmer ID for login.
+        </p>
+
+
+        <hr>
+
+
+        <p>
+            <strong>Farmer Name:</strong>
+            {{ farmer_name }}
+        </p>
+
+
+        <p>
+            <strong>Village:</strong>
+            {{ village }}
+        </p>
+
+
+        <p>
+            <strong>Crop:</strong>
+            {{ crop }}
+        </p>
+
+
+        <p>
+            <strong>Quantity:</strong>
+            {{ quantity }}
+        </p>
+
+
+        <br>
+
+
+        <a href="{{ url_for('farmer_login', lang=lang, registered=farmer_id) }}">
+
+            <button type="button">
+                GO TO FARMER LOGIN
+            </button>
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

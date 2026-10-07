@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ t.farmer }} - {{ t.title }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌾 {{ t.title }}</h1>
+
+    <h2>{{ t.farmer }}</h2>
+
+    <div class="role-container">
+
+        <!-- LOGIN -->
+
+        <a href="/farmer-login?lang={{ lang }}"
+           class="role-card">
+
+            🔐
+
+            <h2>{{ t.login }}</h2>
+
+            <p>
+                {{ t.farmer_login_help }}
+            </p>
+
+        </a>
+
+
+        <!-- REGISTER -->
+
+        <a href="/farmer-register?lang={{ lang }}"
+           class="role-card">
+
+            📝
+
+            <h2>{{ t.register }}</h2>
+
+            <p>
+                Register as a new farmer
+            </p>
+
+        </a>
+
+    </div>
+
+    <br>
+
+    <a href="/home?lang={{ lang }}">
+        ← {{ t.home }}
+    </a>
+
+</div>
+
+</body>
+</html>

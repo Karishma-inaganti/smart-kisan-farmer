@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ t.title }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌾 {{ t.title }}</h1>
+
+    <h2>{{ t.welcome }}</h2>
+
+    <div class="role-container">
+
+        <a href="/farmer-choice?lang={{ lang }}"
+           class="role-card">
+
+            👨‍🌾
+
+            <h2>{{ t.farmer }}</h2>
+
+        </a>
+
+        <a href="/officer-login?lang={{ lang }}"
+           class="role-card">
+
+            👨‍💼
+
+            <h2>{{ t.officer }}</h2>
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

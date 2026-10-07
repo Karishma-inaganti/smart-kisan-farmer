@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="{{ lang|default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Procurement Status - Smart Kisan</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8f3;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+        }
+
+        .status {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            background: #e8f5e9;
+            text-align: center;
+        }
+
+        .status h2 {
+            color: #2e7d32;
+        }
+
+        .details {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-radius: 10px;
+        }
+
+        .details p {
+            font-size: 17px;
+            margin: 10px 0;
+        }
+
+        .success {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .not-booked {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: block;
+            margin-top: 25px;
+            text-align: center;
+            padding: 12px;
+            background: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .back-btn:hover {
+            background: #1b5e20;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Procurement Status</h1>
+
+    {% if booked_slot %}
+
+        <div class="status">
+            <h2 class="success">Slot Booked Successfully</h2>
+
+            <p>
+                Your procurement slot has been successfully booked.
+            </p>
+        </div>
+
+        <div class="details">
+            <p>
+                <strong>Status:</strong>
+                {{ status }}
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                {{ booked_slot.date }}
+            </p>
+
+            <p>
+                <strong>Time:</strong>
+                {{ booked_slot.time }}
+            </p>
+
+            <p>
+                <strong>Token:</strong>
+                {{ booked_slot.token }}
+            </p>
+        </div>
+
+    {% else %}
+
+        <div class="status">
+            <h2 class="not-booked">Not Booked</h2>
+
+            <p>
+                Please book a procurement slot first.
+            </p>
+        </div>
+
+    {% endif %}
+
+    <a href="{{ url_for('farmer') }}" class="back-btn">
+        Back to Farmer Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

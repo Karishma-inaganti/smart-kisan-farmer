@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ t.farmer_dashboard }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- PAGE HEADING -->
+    <div class="dashboard-heading">
+
+        <h1>🌾 {{ t.farmer_dashboard }}</h1>
+
+        {% if farmer and farmer.name %}
+            <p>Welcome, {{ farmer.name }}!</p>
+        {% endif %}
+
+    </div>
+
+
+    <!-- DASHBOARD GRID -->
+    <div class="dashboard-grid">
+
+
+        <!-- 1. MY DETAILS -->
+        <div class="dashboard-card">
+
+            <div class="card-icon">👨‍🌾</div>
+
+            <h2>My Details</h2>
+
+            <p>
+                <strong>Farmer ID:</strong>
+                {{ farmer_id }}
+            </p>
+
+            <p>
+                <strong>Farmer Name:</strong>
+                {{ farmer.name }}
+            </p>
+
+            <p>
+                <strong>Village:</strong>
+                {{ farmer.village }}
+            </p>
+
+            <p>
+                <strong>Crop:</strong>
+                {{ farmer.crop }}
+            </p>
+
+            <p>
+                <strong>Quantity:</strong>
+                {{ farmer.quantity }} kg
+            </p>
+
+        </div>
+
+
+        <!-- 2. PROCUREMENT STATUS -->
+        <a href="{{ url_for('procurement_status', lang=lang) }}"
+           class="dashboard-card">
+
+            <div class="card-icon">🌾</div>
+
+            <h2>{{ t.procurement_status }}</h2>
+
+            <p>
+                Check your crop procurement status.
+            </p>
+
+            {% if farmer.booking_status %}
+                <p class="status-pending">
+                    {{ farmer.booking_status }}
+                </p>
+            {% else %}
+                <p>
+                    Not booked yet
+                </p>
+            {% endif %}
+
+        </a>
+
+
+        <!-- 3. PROCUREMENT SCHEDULE / BOOK SLOT -->
+        <a href="{{ url_for('schedule', lang=lang) }}"
+           class="dashboard-card">
+
+            <div class="card-icon">📅</div>
+
+            <h2>
+                {{ t.procurement_schedule }}
+            </h2>
+
+            <p>
+                {{ t.schedule_desc }}
+            </p>
+
+            <strong>
+                Next 7 Days
+            </strong>
+
+        </a>
+
+
+        <!-- 4. NEARBY CENTRE -->
+        <a href="{{ url_for('nearby_centre', lang=lang) }}"
+           class="dashboard-card">
+
+            <div class="card-icon">📍</div>
+
+            <h2>
+                {{ t.nearby_centre }}
+            </h2>
+
+            <p>
+                {{ t.nearby_desc }}
+            </p>
+
+            {% if farmer.centre %}
+                <p>
+                    <strong>
+                        {{ farmer.centre }}
+                    </strong>
+                </p>
+            {% endif %}
+
+        </a>
+
+
+        <!-- 5. MY TOKEN -->
+        <a href="{{ url_for('my_token', lang=lang) }}"
+           class="dashboard-card">
+
+            <div class="card-icon">🎟️</div>
+
+            <h2>
+                {{ t.my_token }}
+            </h2>
+
+            {% if farmer_token %}
+                <p>
+                    <strong>
+                        Token: {{ farmer_token }}
+                    </strong>
+                </p>
+            {% else %}
+                <p>
+                    {{ t.token_desc }}
+                </p>
+            {% endif %}
+
+        </a>
+
+
+        <!-- 6. QUEUE STATUS -->
+        <a href="{{ url_for('queue_status', lang=lang) }}"
+           class="dashboard-card">
+
+            <div class="card-icon">👥</div>
+
+            <h2>
+                {{ t.queue_status }}
+            </h2>
+
+            <p>
+                {{ t.queue_desc }}
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- HOME -->
+    <div class="home-link">
+
+        <a href="{{ url_for('home', lang=lang) }}">
+            ← {{ t.home }}
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

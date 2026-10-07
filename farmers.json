@@ -1,0 +1,18 @@
+{
+    "SKF3499": {
+        "name": "likhitha",
+        "village": "kurnool",
+        "crop": "rice",
+        "quantity": "55",
+        "mobile": "9652593499",
+        "status": "Pending"
+    },
+    "SKF1230": {
+        "name": "xxxx",
+        "village": "hyderabad",
+        "crop": "paddy",
+        "quantity": "50",
+        "mobile": "9874561230",
+        "status": "Pending"
+    }
+}

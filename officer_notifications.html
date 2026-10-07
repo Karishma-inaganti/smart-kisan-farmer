@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ t.officer_notifications }} - {{ t.title }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌾 {{ t.title }}</h1>
+
+    <h2>🔔 {{ t.officer_notifications }}</h2>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">🔔</div>
+
+            <h3>{{ t.procurement_update }}</h3>
+
+            <p>
+                {{ t.procurement_waiting }}
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">📦</div>
+
+            <h3>{{ t.centre_update }}</h3>
+
+            <p>
+                {{ t.centre_operating }}
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">👨‍🌾</div>
+
+            <h3>{{ t.farmer_activity }}</h3>
+
+            <p>
+                {{ t.farmers_registered }}
+            </p>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <a href="/officer?lang={{ lang }}">
+        ← {{ t.back }}
+    </a>
+
+</div>
+
+</body>
+</html>

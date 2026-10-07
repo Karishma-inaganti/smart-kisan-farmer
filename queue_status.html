@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ t.queue_status }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>👥 {{ t.queue_status }}</h1>
+
+    <div class="dashboard-card">
+
+        <h2>
+            {{ t.current_position }}:
+            <strong>5</strong>
+        </h2>
+
+        <p>
+            {{ t.estimated_time }}:
+            <strong>20 min</strong>
+        </p>
+
+    </div>
+
+    <br>
+
+    <a href="/farmer?lang={{ lang }}">
+        ← {{ t.back }}
+    </a>
+
+</div>
+
+</body>
+</html>

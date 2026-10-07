@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Successful</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>✓ Successfully Booked!</h1>
+
+        <p>Your procurement slot has been booked successfully.</p>
+
+        <hr>
+
+        <p>
+            <strong>Farmer ID:</strong>
+            {{ farmer_id }}
+        </p>
+
+        <p>
+            <strong>Farmer Name:</strong>
+            {{ farmer.get("farmer_name", "") }}
+        </p>
+
+        <p>
+            <strong>Crop:</strong>
+            {{ farmer.get("crop", "") }}
+        </p>
+
+        <p>
+            <strong>Quantity:</strong>
+            {{ farmer.get("quantity", "") }}
+        </p>
+
+        <p>
+            <strong>Village:</strong>
+            {{ farmer.get("village", "") }}
+        </p>
+
+        <p>
+            <strong>Date:</strong>
+            {{ booked_date }}
+        </p>
+
+        <p>
+            <strong>Time:</strong>
+            {{ booked_time }}
+        </p>
+
+        <br>
+
+        <a href="{{ url_for('farmer', lang=lang) }}">
+            Go to Farmer Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

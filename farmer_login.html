@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Login - Smart Kisan</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🌾 Farmer Login</h1>
+
+
+        {% if registered_id %}
+
+        <div class="success">
+
+            Registration successful!
+
+            <br><br>
+
+            Your Farmer ID is:
+
+            <strong>
+                {{ registered_id }}
+            </strong>
+
+        </div>
+
+        {% endif %}
+
+
+        {% if error %}
+
+        <div class="error">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        <form method="POST"
+              action="{{ url_for('farmer_login', lang=lang) }}">
+
+
+            <label for="farmer_id">
+
+                Farmer ID
+
+            </label>
+
+
+            <input
+                type="text"
+                id="farmer_id"
+                name="farmer_id"
+                placeholder="Example: SKF3499"
+                value="{{ registered_id or '' }}"
+                required
+            >
+
+
+            <p>
+
+                Enter SKF followed by the last 4 digits
+                of your registered mobile number.
+
+            </p>
+
+
+            <button type="submit">
+
+                LOGIN
+
+            </button>
+
+        </form>
+
+
+        <div class="register-section">
+
+            <span>
+                New Farmer?
+            </span>
+
+
+            <a href="{{ url_for('farmer_register', lang=lang) }}">
+
+                <button type="button">
+
+                    REGISTER
+
+                </button>
+
+            </a>
+
+        </div>
+
+
+        <br>
+
+
+        <a href="{{ url_for('farmer_choice', lang=lang) }}">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

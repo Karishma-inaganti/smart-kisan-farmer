@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Kisan</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌾 Smart Kisan</h1>
+
+    <h2>Select Language</h2>
+
+    <div class="role-container">
+
+        <a href="/home?lang=en" class="role-card">
+            🇬🇧
+            <h2>English</h2>
+        </a>
+
+        <a href="/home?lang=hi" class="role-card">
+            🇮🇳
+            <h2>हिन्दी</h2>
+        </a>
+
+        <a href="/home?lang=te" class="role-card">
+            🇮🇳
+            <h2>తెలుగు</h2>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>{{ t.nearby_centre }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <div class="page-heading">
+
+        <h1>📍 {{ t.nearby_centre }}</h1>
+
+        {% if village %}
+            <p>
+                Nearest procurement centre for
+                <strong>{{ village }}</strong>
+            </p>
+        {% endif %}
+
+    </div>
+
+
+    {% if centre %}
+
+    <div class="centre-card">
+
+        <div class="card-icon">🏢</div>
+
+        <h2>{{ centre.name }}</h2>
+
+        <p>
+            <strong>Location:</strong>
+            {{ centre.location }}
+        </p>
+
+        <!-- DISTANCE ONLY ONCE -->
+        <p>
+            <strong>Distance:</strong>
+            {{ centre.distance }}
+        </p>
+
+        <p>
+            <strong>Timings:</strong>
+            {{ centre.timing }}
+        </p>
+
+        <p>
+            <strong>Contact:</strong>
+            {{ centre.phone }}
+        </p>
+
+    </div>
+
+    {% else %}
+
+    <div class="centre-card">
+
+        <div class="card-icon">📍</div>
+
+        <h2>Centre Not Available</h2>
+
+        <p>
+            We do not have a mapped procurement centre
+            for your village yet.
+        </p>
+
+        <p>
+            Please contact the procurement officer.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <div class="back-link">
+
+        <a href="{{ url_for('farmer', lang=lang) }}">
+            ← {{ t.back }}
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

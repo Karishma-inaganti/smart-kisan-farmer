@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        {{ t.book_slot }} - Smart Kisan
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        📅 {{ t.book_your_slot }}
+    </h1>
+
+    {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+    {% endif %}
+
+
+    <h2>
+        {{ t.available_slots }}
+    </h2>
+
+
+    <form method="POST"
+          action="/book-slot">
+
+        <input type="hidden"
+               name="lang"
+               value="{{ lang }}">
+
+
+        <label>
+            {{ t.select_date }}
+        </label>
+
+        <select name="date" required>
+
+            <option value="">
+                -- {{ t.select_date }} --
+            </option>
+
+            {% for date in dates %}
+
+                <option value="{{ date.value }}">
+
+                    {{ date.day }}
+                    -
+                    {{ date.display }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label>
+            {{ t.select_time }}
+        </label>
+
+        <select name="time" required>
+
+            <option value="">
+                -- {{ t.select_time }} --
+            </option>
+
+            {% for time in time_slots %}
+
+                <option value="{{ time }}">
+                    {{ time }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <button type="submit">
+            {{ t.book_now }}
+        </button>
+
+    </form>
+
+
+    <br>
+
+    <a href="/farmer?lang={{ lang }}">
+        ← {{ t.back }}
+    </a>
+
+</div>
+
+</body>
+
+</html>

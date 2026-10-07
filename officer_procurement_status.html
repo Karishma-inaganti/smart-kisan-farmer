@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {{ t.officer_procurement_status }}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌾 {{ t.title }}</h1>
+
+    <h2>
+        {{ t.officer_procurement_status }}
+    </h2>
+
+    <p>
+        {{ t.officer_procurement_desc }}
+    </p>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>{{ t.farmer_name_label }}</th>
+
+                <th>{{ t.crop_label }}</th>
+
+                <th>{{ t.quantity_label }}</th>
+
+                <th>{{ t.centre_label }}</th>
+
+                <th>{{ t.status }}</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <tr>
+
+                <td>Ramesh</td>
+
+                <td>Rice</td>
+
+                <td>500 kg</td>
+
+                <td>Kurnool Centre</td>
+
+                <td>
+                    {{ t.pending }}
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Suresh</td>
+
+                <td>Wheat</td>
+
+                <td>300 kg</td>
+
+                <td>Kurnool Centre</td>
+
+                <td>
+                    {{ t.completed }}
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Rajesh</td>
+
+                <td>Maize</td>
+
+                <td>450 kg</td>
+
+                <td>Kurnool Centre</td>
+
+                <td>
+                    {{ t.pending }}
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+    <br>
+
+    <a href="/officer?lang={{ lang }}">
+        ← {{ t.back }}
+    </a>
+
+</div>
+
+</body>
+</html>
